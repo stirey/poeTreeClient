@@ -7,8 +7,8 @@ import Banner from './components/site/Banner';
 // import Contact from './components/site/Contact';
 import Footer from './components/site/Footer';
 import Header from './components/site/Header';
-// import Auth from './components/auth/Auth';
-import Body from './components/site/Body';
+import Auth from './components/auth/Auth';
+// import Body from './components/site/Body';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <div>
       <Header />
       <Banner />
-      <Body />
+      <Auth />
       <Footer />
       
     </div>

@@ -19,10 +19,22 @@
 
 /* LOGIN FORM */
 
-.login{
-  display: inline-block;
-  position: relative;
+.logincard{
   text-align: center;
+  justify-content: center;
+  
+  
+}
+
+.loginform{
+  text-align: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: #CAB2F8;
+}
+
+.loginbtn{
+  padding: 5px;
 }
 
 /* FOOTER */
@@ -30,7 +42,6 @@
 .footer{
   text-align: center;
   background-color: #a2c6bb;
- 
   justify-content: center;
 }
 
