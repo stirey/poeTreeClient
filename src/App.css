@@ -1,5 +1,8 @@
-/* ICONS */
 
+
+
+
+/* HEADER */
 .acorn{
      width: 4vw;
   }
@@ -8,12 +11,28 @@
   width: 4vw;
 }
 
-
-/* FORMS */
-
-#login{
-  background-position: center;
+/* BANNER */
+.bannertext{
+  
+  text-align: center;
 }
+
+/* LOGIN FORM */
+
+.login{
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+/* FOOTER */
+.footerRow {
+  display: block;
+  position: relative;
+  text-align: center;
+  
+}
+
 
 
 

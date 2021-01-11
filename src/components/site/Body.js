@@ -3,26 +3,27 @@ import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText, C
 
 const Example = (props) => {
   return (
-    <Container>
-      <Row>
+    <Container className="logincontainer">
+        <Row>
+        <Col></Col>
         <Col sm="6">
-        
-    <Card> 
-     <Form className="login">
-      <FormGroup>
-        <Label for="exampleEmail">Username</Label>
-        <Input type="username" name="username" id="username" placeholder="with a placeholder" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="examplePassword">Password</Label>
-        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-      </FormGroup>
-      <Button>Submit</Button>
-      </Form>
-    </Card>
+            <Card id="logincard"> 
+                <Form className="login">
+                <FormGroup>
+                <Label className="username">Username</Label>
+                <Input type="username" name="username" id="username" placeholder="enter username" />
+                </FormGroup>
+                <FormGroup>
+                <Label className="username">Password</Label>
+                <Input type="password" name="password" id="examplePassword" placeholder="enter password" />
+                </FormGroup>
+                <Button>Submit</Button>
+                </Form>
+            </Card>
         </Col>
-      </Row>
-      </Container>
+        <Col></Col>
+        </Row>
+    </Container>
   );
 }
 
