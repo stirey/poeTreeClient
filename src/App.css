@@ -13,8 +13,8 @@
 
 /* BANNER */
 .bannertext{
-  
   text-align: center;
+  background-color: #e3af71;
 }
 
 /* LOGIN FORM */
@@ -26,14 +26,18 @@
 }
 
 /* FOOTER */
-.footerRow {
-  display: block;
-  position: relative;
+
+.footer{
   text-align: center;
-  
+  background-color: #a2c6bb;
 }
 
-
+.footerRow{
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  background-color: #a2c6bb;
+}
 
 
 

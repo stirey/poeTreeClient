@@ -23,7 +23,10 @@ const Example = (props) => {
         </Col>
         <Col></Col>
         </Row>
+        <br />
+    <br />
     </Container>
+    
   );
 }
 
