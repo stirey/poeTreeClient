@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import acorn from '../assets/acorn.png';
+import tree from '../assets/tree.png';
 import {
   Collapse,
   Navbar,
@@ -23,6 +25,7 @@ const Header = (props) => {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">PoeTree</NavbarBrand>
+        <NavItem><img id="tree" className="tree" src={tree} alt="tree icon" /></NavItem>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -49,7 +52,10 @@ const Header = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Acorns</NavbarText>
+          <NavbarText>200</NavbarText>
+          <NavItem>
+              <img id="acorn" className="acorn" src={acorn} alt="acorn icon" />
+          </NavItem>
         </Collapse>
       </Navbar>
     </div>
