@@ -1,11 +1,18 @@
 /* ICONS */
 
-  .acorn{
+.acorn{
      width: 4vw;
   }
 
 .tree{
   width: 4vw;
+}
+
+
+/* FORMS */
+
+#login{
+  background-position: center;
 }
 
 

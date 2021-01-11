@@ -24,7 +24,8 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">PoeTree</NavbarBrand>
+        {/* <NavbarBrand href="/">PoeTree</NavbarBrand> */}
+        <NavbarText>PoeTree</NavbarText>
         <NavItem><img id="tree" className="tree" src={tree} alt="tree icon" /></NavItem>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
