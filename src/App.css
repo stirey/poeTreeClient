@@ -30,14 +30,11 @@
 .footer{
   text-align: center;
   background-color: #a2c6bb;
+ 
+  justify-content: center;
 }
 
-.footerRow{
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  background-color: #a2c6bb;
-}
+
 
 
 
