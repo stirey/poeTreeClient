@@ -48,6 +48,9 @@ const Header = (props) => {
                   The Maker
                 </DropdownItem>
                 <DropdownItem>
+                  Teacher Resources
+                </DropdownItem>
+                <DropdownItem>
                   Arts Integration
                 </DropdownItem>
               </DropdownMenu>
