@@ -1,13 +1,17 @@
 import React from 'react';
+import { Jumbotron, Container } from 'reactstrap';
 
+const Example = (props) => {
+  return (
+    <div>
+      <Jumbotron fluid>
+        <Container fluid>
+          
+          <h4 className="lead">An app for writing, growth and connection.</h4>
+        </Container>
+      </Jumbotron>
+    </div>
+  );
+};
 
-
-function Banner() {
-    return (
-      <div className="App">
-        test
-      </div>
-    );
-  }
-  
-  export default Banner;
+export default Example;
