@@ -42,7 +42,7 @@ const Header = (props) => {
                     <DropdownItem href="/theapp" onClick={props.theapp}>The App</DropdownItem>
                     <DropdownItem href='/themaker' onClick={props.themaker}>The Maker</DropdownItem>
                     <DropdownItem href='/forteachers' onClick={props.forteachers}>Teacher Resources</DropdownItem>
-                    <DropdownItem href='/artsintegration' onclick={props.artsintegration}>Arts Integration</DropdownItem>
+                    <DropdownItem href='/artsintegration' onClick={props.artsintegration}>Arts Integration</DropdownItem>
                   </DropdownMenu>
                   </UncontrolledDropdown>
                 </Nav>

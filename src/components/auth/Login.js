@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Card } from 'reactstrap';
 
-const Auth = (props) => {
-
+const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [login, setLogin] = useState(true)
@@ -12,30 +11,35 @@ const Auth = (props) => {
         setLogin(!login)
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        const url = `http://localhost:3000/user/${login ? 'signin' : 'signup'}`
-        const body = {
-            email: email,
-            password: password
-        } // eslint-disable-next-line
-        fetch(url,{
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        fetch( `http://localhost:3000/user/${login ? 'login' : 'create'}`, {
             method: 'POST',
-            headers: {
+            body: JSON.stringify({ 
+                user: { 
+                    email: email, 
+                    password: password 
+                } }),
+            headers: new Headers({
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        }) .then(r => r.json())
-        .then(rObj => props.updateToken(rObj.sessionToken))
+            })
+        }).then(
+            (response) => response.json()
+        ).then((data) => {
+            if (data.sessionToken) 
+            props.updateToken(data.sessionToken);  
+        })
     }
+
+
+
     return (
 <Container>
     <Row>
         <Col></Col> 
             <Col id="logincard">   
                 <Card id="logincard">  
-                    <Form className="loginform">
+                    <Form className="loginform" onSubmit={handleSubmit}>
                     <Label><h1>{ login ? 'Login' :  'Signup' }</h1></Label>    
                     <FormGroup>   
                     <Label htmlFor="email" className="email">Email</Label>
@@ -50,7 +54,7 @@ const Auth = (props) => {
                     </FormGroup> 
                     <br/>
                     <Button id="loginbtn" type="button" onClick={loginToggle}>{login ? "Need a login? Click here!" : "Have a login already? Click here!"}</Button>
-                    <Button onClick={handleSubmit}>Submit</Button>
+                    <Button type="submit">Submit</Button>
                     </Form>
                 </Card>
             </Col>
@@ -62,4 +66,25 @@ const Auth = (props) => {
     )
 }
 
-export default Auth;
+export default Login;
+
+
+
+// const handleSubmit = (e) => {
+//     e.preventDefault()
+//     const url = `http://localhost:3000/user/${login ? 'signin' : 'signup'}`
+//     const body = {
+//         email: email,
+//         password: password
+//     } // eslint-disable-next-line
+//     fetch(url,{
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(body)
+//     }).then((response => response.json()
+//     ).then((resObj) => {
+//         if (resObj.sessionToken)
+//         props.updateToken(resObj.sessionToken)
+// })}

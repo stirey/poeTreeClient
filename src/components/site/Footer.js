@@ -1,8 +1,8 @@
 import React from 'react';
-import { Container, Jumbotron, Row, Col } from 'reactstrap';
+import { Container, Jumbotron, Row } from 'reactstrap';
 
 
-const Footer = (props) => {
+const Footer = () => {
 
     return (
         <div>
@@ -10,7 +10,6 @@ const Footer = (props) => {
         <Jumbotron className="footer" fluid>
         <Container fluid>
         <Row>
-          <h4 className=""></h4>
         </Row>
         <Row className="footer">
         © Copyright 2021 PoeTree  

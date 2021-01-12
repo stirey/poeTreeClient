@@ -6,6 +6,7 @@ import TheApp from '../site/TheApp';
 import TheMaker from '../site/TheMaker';
 import ForTeachers from '../site/ForTeachers';
 import ArtsIntegration from '../site/ArtsIntegration'
+import Login from '../auth/Login';
 
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
         <div>
             <div>
                 <Switch>
+                <Route exact path="/login"><Login /></Route>    
                 <Route exact path="/contact"><Contact /></Route>
                 <Route exact path="/theapp"><TheApp /></Route>
                 <Route exact path="/themaker"><TheMaker /></Route>
