@@ -12,7 +12,22 @@
 }
 
 /* CONTACT */
+#contactForm{
+  text-align: center;
+  justify-content: center;
+}
 
+#contactbtn{
+  margin: 20px;
+}
+
+/* ABOUT */
+
+.aboutHeadlines{
+  text-align: center;
+  justify-content: center;
+  
+}
 
 
 

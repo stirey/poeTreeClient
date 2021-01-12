@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 
 const Contact = (props) => {
   return (
+    <Container id="contactForm">
     <Form>
       <FormGroup>
         <Label>First Name</Label>
@@ -16,8 +17,9 @@ const Contact = (props) => {
         <Label for="examplePassword">Message</Label>
         <Input type="textarea" name="message" id="contactmessage" placeholder="enter your message here..." />
       </FormGroup>
-      <Button>Submit</Button>
+      <Button id="contactbtn">Submit</Button>
     </Form>
+    </Container>
   );
 }
 

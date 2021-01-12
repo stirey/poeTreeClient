@@ -46,13 +46,6 @@ const Header = (props) => {
                   </DropdownMenu>
                   </UncontrolledDropdown>
                 </Nav>
-                 
-                  
-                  
-          
-              
-            
-          
           <NavbarText>200</NavbarText>
           <NavItem>
               <img id="acorn" className="acorn" src={acorn} alt="acorn icon" />
