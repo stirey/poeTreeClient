@@ -5,9 +5,10 @@ import Contact from '../site/Contact';
 import TheApp from '../site/TheApp';
 import TheMaker from '../site/TheMaker';
 import ForTeachers from '../site/ForTeachers';
+import ArtsIntegration from '../site/ArtsIntegration'
 
 
-const HomePage = (props) => {
+const HomePage = () => {
     
     return (
         <div>
@@ -17,6 +18,7 @@ const HomePage = (props) => {
                 <Route exact path="/theapp"><TheApp /></Route>
                 <Route exact path="/themaker"><TheMaker /></Route>
                 <Route exact path="/forteachers"><ForTeachers /></Route>
+                <Route exact path='/artsintegration'><ArtsIntegration /></Route>
                 </Switch>
             </div>
         </div>

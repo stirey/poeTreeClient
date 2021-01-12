@@ -1,16 +1,14 @@
 import React from 'react';
 import { Container, Row } from 'reactstrap';
 
-
-const TheApp = () => {
+const ArtsIntegration = () => {
 
     return (
-
         <Container>
             <Row>This is a test</Row>            
         </Container>
-
     )
 }
 
-export default TheApp;
+export default ArtsIntegration;
+

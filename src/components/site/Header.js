@@ -5,7 +5,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -16,6 +15,7 @@ import {
   NavbarText
 } from 'reactstrap';
 
+
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,38 +24,35 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        {/* <NavbarBrand href="/">PoeTree</NavbarBrand> */}
         <NavbarText>PoeTree</NavbarText>
-        <NavItem><img id="tree" className="tree" src={tree} alt="tree icon" /></NavItem>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/">Home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="">Contact</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                About
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  The App
-                </DropdownItem>
-                <DropdownItem>
-                  The Maker
-                </DropdownItem>
-                <DropdownItem>
-                  Teacher Resources
-                </DropdownItem>
-                <DropdownItem>
-                  Arts Integration
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
+          <NavItem><img id="tree" className="tree" src={tree} alt="tree icon" /></NavItem>
+            <NavbarToggler onClick={toggle} />
+              <Collapse isOpen={isOpen} navbar>
+                <Nav className="mr-auto" navbar>
+                  <NavItem>
+                    <NavLink href="/">Home</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="/contact" onClick={props.contact}>Contact</NavLink>
+                  </NavItem>
+
+                  <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>About</DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem href="/theapp" onClick={props.theapp}>The App</DropdownItem>
+                    <DropdownItem href='/themaker' onClick={props.themaker}>The Maker</DropdownItem>
+                    <DropdownItem href='/forteachers' onClick={props.forteachers}>Teacher Resources</DropdownItem>
+                    <DropdownItem href='/artsintegration' onclick={props.artsintegration}>Arts Integration</DropdownItem>
+                  </DropdownMenu>
+                  </UncontrolledDropdown>
+                </Nav>
+                 
+                  
+                  
+          
+              
+            
+          
           <NavbarText>200</NavbarText>
           <NavItem>
               <img id="acorn" className="acorn" src={acorn} alt="acorn icon" />
