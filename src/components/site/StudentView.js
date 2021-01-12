@@ -1,15 +1,16 @@
 import React from 'react';
-import { Route, Switch} from 'react-router-dom';
+import { Button, NavItem } from 'reactstrap';
 
-const StudentView = () => {
+const StudentView = (props) => {
 
     return (
         <div>
             <div>
-                <Switch>
-
-
-                </Switch>
+            
+            <NavItem>
+            <Button onClick={props.clickLogout}>Logout</Button> 
+            </NavItem>
+                       
             </div>
         </div>
     )

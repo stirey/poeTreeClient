@@ -33,14 +33,14 @@ function App() {
   }
 
   const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? <Router><StudentView sessionToken={sessionToken} /></Router>
+    return (sessionToken === localStorage.getItem('token') ? <Router><StudentView sessionToken={sessionToken} clickLogout={clearToken}/></Router>
       : <Auth updateToken={updateToken} />)
   }
   
   return (
     <div>
      
-      <Header clickLogout={clearToken}/>
+      <Header />
       <Banner />
        <Router><HomePage /></Router>
        {protectedViews()}
