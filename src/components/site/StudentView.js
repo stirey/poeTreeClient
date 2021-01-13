@@ -1,16 +1,20 @@
 import React from 'react';
-import { Button, NavItem } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
+import CreateAnnouncement from '../announcement/CreateAnnouncement';
 
 const StudentView = (props) => {
 
     return (
         <div>
             <div>
-            
-            <NavItem>
-            <Button onClick={props.clickLogout}>Logout</Button> 
-            </NavItem>
-                       
+            <Container>
+                <Row>
+                    <Col sm="10"></Col>
+                    <Col sm="2"><Button onClick={props.clickLogout}>Logout</Button></Col>
+                </Row>
+            </Container>
+            <br/>
+            <CreateAnnouncement />           
             </div>
         </div>
     )
