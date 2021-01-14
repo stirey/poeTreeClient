@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 
-import Contact from '../site/Contact';
-import TheApp from '../site/TheApp';
-import TheMaker from '../site/TheMaker';
-import ForTeachers from '../site/ForTeachers';
-import ArtsIntegration from '../site/ArtsIntegration'
+import Contact from './Contact';
+import TheApp from './TheApp';
+import TheMaker from './TheMaker';
+import ForTeachers from './ForTeachers';
+import ArtsIntegration from './ArtsIntegration'
 import Login from '../auth/Login';
 
 
