@@ -1,7 +1,9 @@
 import React from 'react';
 import { Jumbotron, Container } from 'reactstrap';
 
-const Example = (props) => {
+class Banner extends React.Component {
+
+  render () {
   return (
     <div>
       <Jumbotron className="bannertext" fluid>
@@ -11,6 +13,7 @@ const Example = (props) => {
       </Jumbotron>
     </div>
   );
-};
+}
+}
 
-export default Example;
+export default Banner;

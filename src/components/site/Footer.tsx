@@ -2,8 +2,9 @@ import React from 'react';
 import { Container, Jumbotron, Row } from 'reactstrap';
 
 
-const Footer = () => {
+class Footer extends React.Component  {
 
+    render() {
     return (
         <div>
         <footer>
@@ -20,6 +21,6 @@ const Footer = () => {
         </div>
     )
 }
-
+}
 export default Footer;
 

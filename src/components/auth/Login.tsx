@@ -1,60 +1,96 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Card } from 'reactstrap';
 
-const Login = (props) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [login, setLogin] = useState(true)
+type LoginProps = {
+    email: string;
+    password: string;
+    setEmail: (e: any) => any;
+    setPassword: (e: any) => any;
+    login: (e: any) => any;
+    setLogin: (e: any) => any;
+    sessionToken: any;
+    updateToken: (e: any) => any;   
+    // getToken: any;
+    loginToggle: (e:boolean) => boolean;
+    
+}
 
-    const loginToggle = () => {
-        //set login to the opposite of whatever login is currently
-        setLogin(!login)
+class Login extends React.Component<LoginProps, {}> {
+    constructor(props: LoginProps) {
+        super(props)
     }
+    // loginToggle =() => {
+    //     setLogin(!'login')
+    //     //set login to the opposite of whatever login is currently
+        
+    // }
 
-    const handleSubmit = (event) => {
+    handleSubmit = (event: any) => {
         event.preventDefault();
-        fetch( `http://localhost:3000/user/${login ? 'login' : 'create'}`, {
+        fetch( `http://localhost:3000/user/${'login' ? 'login' : 'create'}`, {
             method: 'POST',
             body: JSON.stringify({ 
                 user: { 
-                    email: email, 
-                    password: password 
-                } }),
+                    email: this.props.email, 
+                    password: this.props.password 
+                }
+             }),
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
-        }).then(
-            (response) => response.json()
-        ).then((data) => {
-            if (data.sessionToken) 
-            props.updateToken(data.sessionToken);  
+        }).then((response) => {
+            if(response.status === 200) {
+                console.log("login successful");
+            } else {
+                console.log("login failed");
+            } return response.json();
+        }).then((data) => {
+            this.props.updateToken(data.sessionToken);  
         })
     }
 
 
-
+ render() {
     return (
+        <div>
 <Container>
     <Row>
         <Col></Col> 
             <Col id="logincard">   
                 <Card id="logincard">  
-                    <Form className="loginform" onSubmit={handleSubmit}>
-                    <Label><h1>{ login ? 'Login' :  'Signup' }</h1></Label>    
+                    <Form className="loginform" onSubmit={this.handleSubmit}>
+                    <Label><h1>{ 'login' ? 'Login' :  'Signup' }</h1></Label>    
                     <FormGroup>   
                     <Label htmlFor="email" className="email">Email</Label>
                     <br/>
-                    <Input value={email} type="email" name="email" id="email" placeholder="enter email" onChange={e => setEmail(e.target.value)} />
+                    <Input  
+                        className="email" 
+                        name="email" 
+                        id="email" 
+                        placeholder="enter email" 
+                        onChange={(e) => this.props.setEmail(e.target.value)} 
+                        value={this.props.email}/>
                     <br/>
                     </FormGroup> 
                     <FormGroup>
                     <Label htmlFor="password"className="password">Password</Label>
                     <br/>
-                    <Input type="password" name="password" id="password" placeholder="enter password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <Input 
+                    className="password"
+                    name="password" 
+                    id="password" 
+                    placeholder="enter password" 
+                    onChange={(e) => this.props.setPassword(e.target.value)}
+                    value={this.props.password} 
+                     />
                     </FormGroup> 
                     <br/>
-                    <Button id="loginbtn" type="button" onClick={loginToggle}>{login ? "Need a login? Click here!" : "Have a login already? Click here!"}</Button>
-                    <Button type="submit">Submit</Button>
+                    <Button 
+                    id="loginbtn" 
+                    className="button" 
+                    onClick={(e) => this.props.loginToggle}>{'login' ? "Need a login? Click here!" : "Have a login already? Click here!"}</Button>
+                    <Button 
+                    type="submit">Submit</Button>
                     </Form>
                 </Card>
             </Col>
@@ -63,8 +99,11 @@ const Login = (props) => {
     <br />
     <br />
 </Container>
+</div>
     )
 }
+}
+
 
 export default Login;
 

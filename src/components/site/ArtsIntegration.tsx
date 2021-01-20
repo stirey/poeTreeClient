@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-const ArtsIntegration = () => {
+class ArtsIntegration extends React.Component {
 
+    render() {
     return (
         <Container id="theapp">
             <Row className="aboutHeadlines"><h3>What is Arts Integration?</h3></Row>
@@ -21,6 +22,7 @@ const ArtsIntegration = () => {
             <br/>           
         </Container>
     )
+}
 }
 
 export default ArtsIntegration;

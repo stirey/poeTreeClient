@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import acorn from '../assets/acorn.png';
 import tree from '../assets/tree.png';
 import {
@@ -15,34 +15,50 @@ import {
   NavbarText
 } from 'reactstrap';
 
+type HeaderState = {
+  toggle: boolean;
+  isOpen: boolean;
+  setIsOpen: (e: any) => any;
+  theapp: boolean;
+  tree: string;
+  contact: boolean;
+  themaker: boolean;
+  forteachers: boolean;
+  artsintegration: boolean;
+}
 
-const Header = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+class Header extends React.Component<HeaderState,{}> {
+  constructor(props: HeaderState) {
+    super(props)
+  }
+  
+  toggle() {
+    this.props.setIsOpen(!this.props.isOpen)
+  }
 
-  const toggle = () => setIsOpen(!isOpen);
-
+  render(){
   return (
     <div>
       <Navbar color="light" light expand="md">
         <NavbarText>PoeTree</NavbarText>
-          <NavItem><img id="tree" className="tree" src={tree} alt="tree icon" /></NavItem>
-            <NavbarToggler onClick={toggle} />
-              <Collapse isOpen={isOpen} navbar>
+          <NavItem><img id="tree" className="tree" src={this.props.tree} alt="tree icon" /></NavItem>
+            <NavbarToggler onClick={this.toggle} />
+              <Collapse isOpen={this.props.isOpen} navbar>
                 <Nav className="mr-auto" navbar>
                   <NavItem>
                     <NavLink href="/">Home</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/contact" onClick={props.contact}>Contact</NavLink>
+                    <NavLink href="/contact" className="contact" onClick={(e) => this.props.contact}>Contact</NavLink>
                   </NavItem>
 
                   <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>About</DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem href="/theapp" onClick={props.theapp}>The App</DropdownItem>
-                    <DropdownItem href='/themaker' onClick={props.themaker}>The Maker</DropdownItem>
-                    <DropdownItem href='/forteachers' onClick={props.forteachers}>Teacher Resources</DropdownItem>
-                    <DropdownItem href='/artsintegration' onClick={props.artsintegration}>Arts Integration</DropdownItem>
+                    <DropdownItem href="/theapp" className="theapp" onClick={(e) => this.props.theapp}>The App</DropdownItem>
+                    <DropdownItem href='/themaker' className="themaker" onClick={(e) => this.props.themaker}>The Maker</DropdownItem>
+                    <DropdownItem href='/forteachers' className="forteachers" onClick={(e) => this.props.forteachers}>Teacher Resources</DropdownItem>
+                    <DropdownItem href='/artsintegration'className="artsintegration" onClick={(e) => this.props.artsintegration}>Arts Integration</DropdownItem>
                   </DropdownMenu>
                   </UncontrolledDropdown>
                 </Nav>
@@ -54,6 +70,7 @@ const Header = (props) => {
       </Navbar>
     </div>
   );
+}
 }
 
 export default Header;

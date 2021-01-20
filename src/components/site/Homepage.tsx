@@ -8,9 +8,29 @@ import ForTeachers from './ForTeachers';
 import ArtsIntegration from './ArtsIntegration'
 import Login from '../auth/Login';
 
+type HomePageStates = {
+    email: string;
+    password: string;
+    name: string;
+    message: string;
+}
 
-const HomePage = () => {
-    
+type AppProps = {
+    updateToken: any;
+    getToken: any;
+    clearToken: any;
+    sessionToken: any;
+    homepagestates: HomePageStates
+  }
+  
+
+class HomePage extends React.Component<{}, AppProps>{
+    constructor(props: AppProps){
+        super(props);
+
+    } 
+
+    render() {
     return (
         <div>
             <div>
@@ -25,6 +45,7 @@ const HomePage = () => {
             </div>
         </div>
     )
+}
 }
 
 export default HomePage;

@@ -1,53 +1,93 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
+import { render } from '@testing-library/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Banner from './components/site/Banner';
 import Footer from './components/site/Footer';
-import Header from './components/site/Header';
 import Auth from './components/auth/Auth';
-// import Body from './components/site/Body';
 import HomePage from './components/site/Homepage';
-import StudentView from './components/site/StudentView';
+// import StudentView from './components/site/StudentView';
 
 
+type AppStates = {
+  email: string;
+  setEmail: (e: any) => any;
+  password: string;
+  setPassword: (e: any) => any;
+  login: (e: any) => any;
+  setLogin: (e: any) => any;
+  sessionToken: any;
+  updateToken: (e: any) => any;   
+  loginToggle: (e:boolean) => boolean;
+}
 
-function App() {
-  const [sessionToken, setSessionToken] = useState('');
+type AppProps = {
+  updateToken: any;
+  getToken: any;
+  clearToken: any;
+  sessionToken: any;
 
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setSessionToken(localStorage.getItem('token'));
+}
+
+// function declarations cannot be typed-always use arrow function expressions.
+//React.FunctionComponent is the type I am assigning to App
+//defines what we store in App has to be not only a function, but a function that qualifies as a functional component in React
+class App extends React.Component<AppProps, AppStates> {
+  constructor(props: AppProps) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      sessionToken: "",
+      setEmail: (e) => {
+        this.setState({
+          email: e
+        })
+      },
+      setPassword: (e) => {
+        this.setState({
+          password: e
+        })
+      },
+
     }
-  }, [])
+  }
 
-  const updateToken = (newToken) => {
+  getToken = () => {
+    if (localStorage.getItem('token')) {
+      this.setState({ sessionToken: localStorage.getItem('token')});
+    }
+  }
+
+  updateToken = (newToken: any) => {
     localStorage.setItem('token', newToken);
-    setSessionToken(newToken);
-    console.log(sessionToken);
-  };
+    this.setState({ sessionToken: newToken});
+    console.log(newToken);
+  }
 
-  const clearToken = () => {
+  clearToken = () => {
     localStorage.clear();
-    setSessionToken('');
+    this.setState({ sessionToken: ''});
   }
 
-  const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? <Router><StudentView sessionToken={sessionToken} clickLogout={clearToken}/></Router>
-      : <Auth updateToken={updateToken} />)
-  }
-  
+render() {
   return (
-    <div>
-     
-      <Header />
+    <div className="App">
+     <div className="verticalCenter">
+      {/* <Header /> */}
       <Banner />
-       <Router><HomePage /></Router>
-       {protectedViews()}
+       <Router>
+         <Switch>
+         <Route exact path="/"><HomePage /></Route>
+         <Route><Auth /></Route>
+         </Switch>
+        </Router>
       <Footer />
-      
+      </div>
     </div>
   );
+}
 }
 
 export default App;

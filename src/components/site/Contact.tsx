@@ -1,26 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 
-const Contact = (props) => {
+type ContactProps = {
+  name: string;
+  email: string;
+  message: string;
+}
+
+class Contact extends React.Component<ContactProps, {}> {
+  constructor(props: ContactProps) {
+    super(props)
+  }
+
+  render() {
   return (
     <Container id="contactForm">
     <Form>
       <FormGroup>
         <Label>First Name</Label>
-        <Input type="name" name="name" id="contactname" placeholder="enter first name" />
+        <Input 
+        className="name" 
+        name="name" 
+        id="contactname" 
+        placeholder="enter first name" />
       </FormGroup>
       <FormGroup>
         <Label for="exampleEmail">Email</Label>
-        <Input type="email" name="email" id="exampleEmail" placeholder="enter your email" />
+        <Input 
+        className="email"  
+        name="email" 
+        id="exampleEmail" 
+        placeholder="enter your email" />
       </FormGroup>
       <FormGroup>
         <Label for="examplePassword">Message</Label>
-        <Input type="textarea" name="message" id="contactmessage" placeholder="enter your message here..." />
+        <Input 
+        className="message"
+        name="message" 
+        id="contactmessage" 
+        placeholder="enter your message here..." />
       </FormGroup>
-      <Button id="contactbtn">Submit</Button>
+      <Button type="submit" id="contactbtn">Submit</Button>
     </Form>
     </Container>
   );
+}
 }
 
 export default Contact;
