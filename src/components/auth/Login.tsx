@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Card } from 'reactstrap';
 
 type LoginProps = {
-    email: string;
-    password: string;
-    setEmail: (e: any) => any;
-    setPassword: (e: any) => any;
-    login: (e: any) => any;
-    setLogin: (e: any) => any;
-    sessionToken: any;
-    updateToken: (e: any) => any;   
-    // getToken: any;
-    loginToggle: (e:boolean) => boolean;
+    updateToken: (e: string) => void;   
     
 }
+type LoginState = {
+    email: string,
+    password: string
+}
 
-class Login extends React.Component<LoginProps, {}> {
+class Login extends React.Component<LoginProps, LoginState> {
     constructor(props: LoginProps) {
         super(props)
+
+        this.state={
+            email: "",
+            password: ""
+        }
     }
+    
     // loginToggle =() => {
     //     setLogin(!'login')
     //     //set login to the opposite of whatever login is currently
@@ -27,12 +28,12 @@ class Login extends React.Component<LoginProps, {}> {
 
     handleSubmit = (event: any) => {
         event.preventDefault();
-        fetch( `http://localhost:3000/user/${'login' ? 'login' : 'create'}`, {
+        fetch( `http://localhost:3000/user/login`, {
             method: 'POST',
             body: JSON.stringify({ 
                 user: { 
-                    email: this.props.email, 
-                    password: this.props.password 
+                    email: this.state.email, 
+                    password: this.state.password 
                 }
              }),
             headers: new Headers({
@@ -44,7 +45,7 @@ class Login extends React.Component<LoginProps, {}> {
             } else {
                 console.log("login failed");
             } return response.json();
-        }).then((data) => {
+        }).then((data) => { //updateToken sends our new token back to App.tsx
             this.props.updateToken(data.sessionToken);  
         })
     }
@@ -68,8 +69,8 @@ class Login extends React.Component<LoginProps, {}> {
                         name="email" 
                         id="email" 
                         placeholder="enter email" 
-                        onChange={(e) => this.props.setEmail(e.target.value)} 
-                        value={this.props.email}/>
+                        onChange={(e) => {this.setState({email: e.target.value})}} 
+                        value={this.state.email}/>
                     <br/>
                     </FormGroup> 
                     <FormGroup>
@@ -80,15 +81,12 @@ class Login extends React.Component<LoginProps, {}> {
                     name="password" 
                     id="password" 
                     placeholder="enter password" 
-                    onChange={(e) => this.props.setPassword(e.target.value)}
-                    value={this.props.password} 
+                    onChange={(e) => {this.setState({password: e.target.value})}}
+                    value={this.state.password} 
                      />
                     </FormGroup> 
                     <br/>
-                    <Button 
-                    id="loginbtn" 
-                    className="button" 
-                    onClick={(e) => this.props.loginToggle}>{'login' ? "Need a login? Click here!" : "Have a login already? Click here!"}</Button>
+    
                     <Button 
                     type="submit">Submit</Button>
                     </Form>

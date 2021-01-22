@@ -8,23 +8,13 @@ import ForTeachers from './ForTeachers';
 import ArtsIntegration from './ArtsIntegration'
 import Login from '../auth/Login';
 
-type HomePageStates = {
-    email: string;
-    password: string;
-    name: string;
-    message: string;
-}
 
 type AppProps = {
-    updateToken: any;
-    getToken: any;
-    clearToken: any;
-    sessionToken: any;
-    homepagestates: HomePageStates
+    
   }
   
 
-class HomePage extends React.Component<{}, AppProps>{
+class HomePage extends React.Component<AppProps,{} >{
     constructor(props: AppProps){
         super(props);
 
@@ -34,8 +24,7 @@ class HomePage extends React.Component<{}, AppProps>{
     return (
         <div>
             <div>
-                <Switch>
-                <Route exact path="/login"><Login /></Route>    
+                <Switch>    
                 <Route exact path="/contact"><Contact /></Route>
                 <Route exact path="/theapp"><TheApp /></Route>
                 <Route exact path="/themaker"><TheMaker /></Route>
